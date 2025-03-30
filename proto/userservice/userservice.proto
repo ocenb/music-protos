@@ -7,8 +7,8 @@ option go_package = "github.com/ocenb/music-protos/gen/go/userservice";
 service User {
   rpc Register (RegisterReq) returns (RegisterRes);
   rpc Login (LoginReq) returns (LoginRes);
-  rpc Logout (LoginReq) returns (LoginRes);
-  rpc LogoutAll (LogoutReq) returns (LogoutRes);
+  rpc Logout (LogoutReq) returns (LogoutRes);
+  rpc LogoutAll (LogoutAllReq) returns (LogoutAllRes);
   rpc Refresh (RefreshReq) returns (RefreshRes);
   rpc Verify (VerifyReq) returns (VerifyRes);
   rpc NewVerification (NewVerificationReq) returns (NewVerificationRes);

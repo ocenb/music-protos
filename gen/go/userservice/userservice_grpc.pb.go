@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v5.29.1
-// source: user-service/user-service.proto
+// source: userservice/userservice.proto
 
-package user_service
+package userservice
 
 import (
 	context "context"
@@ -19,18 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	User_Register_FullMethodName          = "/user_service.User/Register"
-	User_Login_FullMethodName             = "/user_service.User/Login"
-	User_Logout_FullMethodName            = "/user_service.User/Logout"
-	User_LogoutAll_FullMethodName         = "/user_service.User/LogoutAll"
-	User_Refresh_FullMethodName           = "/user_service.User/Refresh"
-	User_Verify_FullMethodName            = "/user_service.User/Verify"
-	User_NewVerification_FullMethodName   = "/user_service.User/NewVerification"
-	User_ChangeEmail_FullMethodName       = "/user_service.User/ChangeEmail"
-	User_ChangePassword_FullMethodName    = "/user_service.User/ChangePassword"
-	User_GetUserByUsername_FullMethodName = "/user_service.User/GetUserByUsername"
-	User_ChangeUsername_FullMethodName    = "/user_service.User/ChangeUsername"
-	User_DeleteUser_FullMethodName        = "/user_service.User/DeleteUser"
+	User_Register_FullMethodName          = "/userservice.User/Register"
+	User_Login_FullMethodName             = "/userservice.User/Login"
+	User_Logout_FullMethodName            = "/userservice.User/Logout"
+	User_LogoutAll_FullMethodName         = "/userservice.User/LogoutAll"
+	User_Refresh_FullMethodName           = "/userservice.User/Refresh"
+	User_Verify_FullMethodName            = "/userservice.User/Verify"
+	User_NewVerification_FullMethodName   = "/userservice.User/NewVerification"
+	User_ChangeEmail_FullMethodName       = "/userservice.User/ChangeEmail"
+	User_ChangePassword_FullMethodName    = "/userservice.User/ChangePassword"
+	User_GetUserByUsername_FullMethodName = "/userservice.User/GetUserByUsername"
+	User_ChangeUsername_FullMethodName    = "/userservice.User/ChangeUsername"
+	User_DeleteUser_FullMethodName        = "/userservice.User/DeleteUser"
 )
 
 // UserClient is the client API for User service.
@@ -482,7 +482,7 @@ func _User_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(int
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var User_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user_service.User",
+	ServiceName: "userservice.User",
 	HandlerType: (*UserServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -535,5 +535,5 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user-service/user-service.proto",
+	Metadata: "userservice/userservice.proto",
 }

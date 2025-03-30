@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package user_service;
+
+option go_package = "github.com/ocenb/music-protos/gen/go/user-service";
+
+service User {
+  rpc Register (RegisterReq) returns (RegisterRes);
+  rpc Login (LoginReq) returns (LoginRes);
+  rpc Logout (LoginReq) returns (LoginRes);
+  rpc LogoutAll (LogoutReq) returns (LogoutRes);
+  rpc Refresh (RefreshReq) returns (RefreshRes);
+  rpc Verify (VerifyReq) returns (VerifyRes);
+  rpc NewVerification (NewVerificationReq) returns (NewVerificationRes);
+  rpc ChangeEmail (ChangeEmailReq) returns (ChangeEmailRes);
+  rpc ChangePassword (ChangePasswordReq) returns (ChangePasswordRes);
+
+	rpc GetUserByUsername (GetUserByUsernameReq) returns (GetUserByUsernameRes);
+	rpc ChangeUsername (ChangeUsernameReq) returns (ChangeUsernameRes);
+	rpc DeleteUser (DeleteUserReq) returns (DeleteUserRes);
+}
+
+
+message UserPrivateModel {
+  int64 id = 1;
+  string username = 2;
+  string email = 3;
+  string createdAt = 4;
+}
+message UserPublicModel {
+  int64 id = 1;
+  string username = 2;
+	int64 followersCount = 3;
+}
+
+message RegisterReq {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+message RegisterRes {
+  UserPrivateModel user = 1;
+}
+
+message LoginReq {
+  string email = 1;
+  string password = 2;
+}
+message LoginRes {
+	UserPrivateModel user = 1;
+  string accessToken = 2;
+  string refreshToken = 3;
+}
+
+message LogoutReq {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+message LogoutRes {
+  bool success = 1;
+}
+
+message LogoutAllReq {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+message LogoutAllRes {
+  bool success = 1;
+}
+
+message RefreshReq {
+  string refreshToken = 1;
+}
+message RefreshRes {
+  UserPrivateModel user = 1;
+	string accessToken = 2;
+  string refreshToken = 3;
+}
+
+message VerifyReq {
+  string verifyToken = 1;
+}
+message VerifyRes {
+  UserPrivateModel user = 1;
+	string accessToken = 2;
+  string refreshToken = 3;
+}
+
+message NewVerificationReq {
+  string email = 1;
+  string password = 2;
+}
+message NewVerificationRes {
+  UserPrivateModel user = 1;
+}
+
+message ChangeEmailReq {
+  string email = 1;
+	string accessToken = 2;
+  string refreshToken = 3;
+}
+message ChangeEmailRes {
+  UserPrivateModel user = 1;
+	string accessToken = 2;
+  string refreshToken = 3;
+}
+
+message ChangePasswordReq {
+  string oldPassword = 1;
+  string newPassword = 2;
+	string accessToken = 3;
+  string refreshToken = 4;
+}
+message ChangePasswordRes {
+  UserPrivateModel user = 1;
+	string accessToken = 2;
+  string refreshToken = 3;
+}
+
+
+message GetUserByUsernameReq {
+	string accessToken = 1;
+  string refreshToken = 2;
+  string username = 3;
+}
+message GetUserByUsernameRes {
+  UserPublicModel user = 1;
+}
+
+message ChangeUsernameReq {
+	string accessToken = 1;
+  string refreshToken = 2;
+  string username = 3;
+}
+message ChangeUsernameRes {
+  UserPublicModel user = 1;
+}
+
+message DeleteUserReq {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+message DeleteUserRes {
+	bool success = 1;
+}

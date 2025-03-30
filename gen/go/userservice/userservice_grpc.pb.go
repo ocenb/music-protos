@@ -39,8 +39,8 @@ const (
 type UserClient interface {
 	Register(ctx context.Context, in *RegisterReq, opts ...grpc.CallOption) (*RegisterRes, error)
 	Login(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginRes, error)
-	Logout(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginRes, error)
-	LogoutAll(ctx context.Context, in *LogoutReq, opts ...grpc.CallOption) (*LogoutRes, error)
+	Logout(ctx context.Context, in *LogoutReq, opts ...grpc.CallOption) (*LogoutRes, error)
+	LogoutAll(ctx context.Context, in *LogoutAllReq, opts ...grpc.CallOption) (*LogoutAllRes, error)
 	Refresh(ctx context.Context, in *RefreshReq, opts ...grpc.CallOption) (*RefreshRes, error)
 	Verify(ctx context.Context, in *VerifyReq, opts ...grpc.CallOption) (*VerifyRes, error)
 	NewVerification(ctx context.Context, in *NewVerificationReq, opts ...grpc.CallOption) (*NewVerificationRes, error)
@@ -79,9 +79,9 @@ func (c *userClient) Login(ctx context.Context, in *LoginReq, opts ...grpc.CallO
 	return out, nil
 }
 
-func (c *userClient) Logout(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LoginRes, error) {
+func (c *userClient) Logout(ctx context.Context, in *LogoutReq, opts ...grpc.CallOption) (*LogoutRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LoginRes)
+	out := new(LogoutRes)
 	err := c.cc.Invoke(ctx, User_Logout_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -89,9 +89,9 @@ func (c *userClient) Logout(ctx context.Context, in *LoginReq, opts ...grpc.Call
 	return out, nil
 }
 
-func (c *userClient) LogoutAll(ctx context.Context, in *LogoutReq, opts ...grpc.CallOption) (*LogoutRes, error) {
+func (c *userClient) LogoutAll(ctx context.Context, in *LogoutAllReq, opts ...grpc.CallOption) (*LogoutAllRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LogoutRes)
+	out := new(LogoutAllRes)
 	err := c.cc.Invoke(ctx, User_LogoutAll_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -185,8 +185,8 @@ func (c *userClient) DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...
 type UserServer interface {
 	Register(context.Context, *RegisterReq) (*RegisterRes, error)
 	Login(context.Context, *LoginReq) (*LoginRes, error)
-	Logout(context.Context, *LoginReq) (*LoginRes, error)
-	LogoutAll(context.Context, *LogoutReq) (*LogoutRes, error)
+	Logout(context.Context, *LogoutReq) (*LogoutRes, error)
+	LogoutAll(context.Context, *LogoutAllReq) (*LogoutAllRes, error)
 	Refresh(context.Context, *RefreshReq) (*RefreshRes, error)
 	Verify(context.Context, *VerifyReq) (*VerifyRes, error)
 	NewVerification(context.Context, *NewVerificationReq) (*NewVerificationRes, error)
@@ -211,10 +211,10 @@ func (UnimplementedUserServer) Register(context.Context, *RegisterReq) (*Registe
 func (UnimplementedUserServer) Login(context.Context, *LoginReq) (*LoginRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedUserServer) Logout(context.Context, *LoginReq) (*LoginRes, error) {
+func (UnimplementedUserServer) Logout(context.Context, *LogoutReq) (*LogoutRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
-func (UnimplementedUserServer) LogoutAll(context.Context, *LogoutReq) (*LogoutRes, error) {
+func (UnimplementedUserServer) LogoutAll(context.Context, *LogoutAllReq) (*LogoutAllRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LogoutAll not implemented")
 }
 func (UnimplementedUserServer) Refresh(context.Context, *RefreshReq) (*RefreshRes, error) {
@@ -299,7 +299,7 @@ func _User_Login_Handler(srv interface{}, ctx context.Context, dec func(interfac
 }
 
 func _User_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LoginReq)
+	in := new(LogoutReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -311,13 +311,13 @@ func _User_Logout_Handler(srv interface{}, ctx context.Context, dec func(interfa
 		FullMethod: User_Logout_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).Logout(ctx, req.(*LoginReq))
+		return srv.(UserServer).Logout(ctx, req.(*LogoutReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _User_LogoutAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LogoutReq)
+	in := new(LogoutAllReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -329,7 +329,7 @@ func _User_LogoutAll_Handler(srv interface{}, ctx context.Context, dec func(inte
 		FullMethod: User_LogoutAll_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).LogoutAll(ctx, req.(*LogoutReq))
+		return srv.(UserServer).LogoutAll(ctx, req.(*LogoutAllReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }

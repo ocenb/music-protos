@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	userservice "github.com/ocenb/music-protos/gen/go/userservice"
+	userservice "github.com/ocenb/music-protos/gen/userservice"
 	http "net/http"
 	strings "strings"
 )

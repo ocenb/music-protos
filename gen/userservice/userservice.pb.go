@@ -1452,8 +1452,8 @@ const file_userservice_userservice_proto_rawDesc = "" +
 	"\x11GetUserByUsername\x12%.userservice.GetUserByUsernameRequest\x1a&.userservice.GetUserByUsernameResponse\x12Y\n" +
 	"\x0eChangeUsername\x12\".userservice.ChangeUsernameRequest\x1a#.userservice.ChangeUsernameResponse\x12M\n" +
 	"\n" +
-	"DeleteUser\x12\x1e.userservice.DeleteUserRequest\x1a\x1f.userservice.DeleteUserResponseB\xa1\x01\n" +
-	"\x0fcom.userserviceB\x10UserserviceProtoP\x01Z0github.com/ocenb/music-protos/gen/go/userservice\xa2\x02\x03UXX\xaa\x02\vUserservice\xca\x02\vUserservice\xe2\x02\x17Userservice\\GPBMetadata\xea\x02\vUserserviceb\x06proto3"
+	"DeleteUser\x12\x1e.userservice.DeleteUserRequest\x1a\x1f.userservice.DeleteUserResponseB\x9e\x01\n" +
+	"\x0fcom.userserviceB\x10UserserviceProtoP\x01Z-github.com/ocenb/music-protos/gen/userservice\xa2\x02\x03UXX\xaa\x02\vUserservice\xca\x02\vUserservice\xe2\x02\x17Userservice\\GPBMetadata\xea\x02\vUserserviceb\x06proto3"
 
 var (
 	file_userservice_userservice_proto_rawDescOnce sync.Once

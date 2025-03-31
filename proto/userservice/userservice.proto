@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package userservice;
 
-option go_package = "github.com/ocenb/music-protos/gen/go/userservice";
+option go_package = "github.com/ocenb/music-protos/gen/userservice";
 
 import "buf/validate/validate.proto";
 

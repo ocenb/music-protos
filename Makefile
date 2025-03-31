@@ -1,6 +1,4 @@
-.PHONY: gen-userservice
+.PHONY: gen
 
-PROTOC = protoc -I proto --go_out=./gen/go/ --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
-
-gen-userservice:
-	$(PROTOC) proto/userservice/*.proto
+gen:
+	buf generate

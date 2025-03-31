@@ -4,20 +4,22 @@ package userservice;
 
 option go_package = "github.com/ocenb/music-protos/gen/go/userservice";
 
-service User {
-  rpc Register (RegisterReq) returns (RegisterRes);
-  rpc Login (LoginReq) returns (LoginRes);
-  rpc Logout (LogoutReq) returns (LogoutRes);
-  rpc LogoutAll (LogoutAllReq) returns (LogoutAllRes);
-  rpc Refresh (RefreshReq) returns (RefreshRes);
-  rpc Verify (VerifyReq) returns (VerifyRes);
-  rpc NewVerification (NewVerificationReq) returns (NewVerificationRes);
-  rpc ChangeEmail (ChangeEmailReq) returns (ChangeEmailRes);
-  rpc ChangePassword (ChangePasswordReq) returns (ChangePasswordRes);
+import "buf/validate/validate.proto";
 
-	rpc GetUserByUsername (GetUserByUsernameReq) returns (GetUserByUsernameRes);
-	rpc ChangeUsername (ChangeUsernameReq) returns (ChangeUsernameRes);
-	rpc DeleteUser (DeleteUserReq) returns (DeleteUserRes);
+service UserService {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc Logout (LogoutRequest) returns (LogoutResponse);
+  rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse);
+  rpc Refresh (RefreshRequest) returns (RefreshResponse);
+  rpc Verify (VerifyRequest) returns (VerifyResponse);
+  rpc NewVerification (NewVerificationRequest) returns (NewVerificationResponse);
+  rpc ChangeEmail (ChangeEmailRequest) returns (ChangeEmailResponse);
+  rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+
+	rpc GetUserByUsername (GetUserByUsernameRequest) returns (GetUserByUsernameResponse);
+	rpc ChangeUsername (ChangeUsernameRequest) returns (ChangeUsernameResponse);
+	rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
 }
 
 
@@ -33,113 +35,106 @@ message UserPublicModel {
 	int64 followersCount = 3;
 }
 
-message RegisterReq {
-  string username = 1;
-  string email = 2;
-  string password = 3;
+message RegisterRequest {
+	string username = 1 [(buf.validate.field) = {string: {min_len: 1, max_len: 20, pattern: "^[a-z0-9][a-z0-9_-]*$"}}];
+  string email = 2 [(buf.validate.field) = {string: {email: true}}];
+  string password = 3 [(buf.validate.field) = {string: {min_len: 5, max_len: 50, pattern: "^[a-zA-Z0-9!@#$%^&*?-]*$"}}];
 }
-message RegisterRes {
+message RegisterResponse {
   UserPrivateModel user = 1;
 }
 
-message LoginReq {
-  string email = 1;
-  string password = 2;
+message LoginRequest {
+  string email = 1 [(buf.validate.field) = {string: {email: true}}];
+  string password = 2 [(buf.validate.field) = {string: {min_len: 5, max_len: 50, pattern: "^[a-zA-Z0-9!@#$%^&*?-]*$"}}];
 }
-message LoginRes {
+message LoginResponse {
 	UserPrivateModel user = 1;
   string accessToken = 2;
   string refreshToken = 3;
 }
 
-message LogoutReq {
+message LogoutRequest {
   string accessToken = 1;
-  string refreshToken = 2;
 }
-message LogoutRes {
+message LogoutResponse {
   bool success = 1;
 }
 
-message LogoutAllReq {
+message LogoutAllRequest {
   string accessToken = 1;
-  string refreshToken = 2;
 }
-message LogoutAllRes {
+message LogoutAllResponse {
   bool success = 1;
 }
 
-message RefreshReq {
+message RefreshRequest {
   string refreshToken = 1;
 }
-message RefreshRes {
+message RefreshResponse {
   UserPrivateModel user = 1;
 	string accessToken = 2;
   string refreshToken = 3;
 }
 
-message VerifyReq {
+message VerifyRequest {
   string verifyToken = 1;
 }
-message VerifyRes {
+message VerifyResponse {
   UserPrivateModel user = 1;
 	string accessToken = 2;
   string refreshToken = 3;
 }
 
-message NewVerificationReq {
-  string email = 1;
-  string password = 2;
+message NewVerificationRequest {
+  string email = 1 [(buf.validate.field) = {string: {email: true}}];
+  string password = 2 [(buf.validate.field) = {string: {min_len: 5, max_len: 50, pattern: "^[a-zA-Z0-9!@#$%^&*?-]*$"}}];
 }
-message NewVerificationRes {
+message NewVerificationResponse {
   UserPrivateModel user = 1;
 }
 
-message ChangeEmailReq {
-  string email = 1;
+message ChangeEmailRequest {
+  string email = 1 [(buf.validate.field) = {string: {email: true}}];
 	string accessToken = 2;
-  string refreshToken = 3;
 }
-message ChangeEmailRes {
+message ChangeEmailResponse {
   UserPrivateModel user = 1;
 	string accessToken = 2;
   string refreshToken = 3;
 }
 
-message ChangePasswordReq {
-  string oldPassword = 1;
-  string newPassword = 2;
+message ChangePasswordRequest {
+  string oldPassword = 1 [(buf.validate.field) = {string: {min_len: 5, max_len: 50, pattern: "^[a-zA-Z0-9!@#$%^&*?-]*$"}}];
+  string newPassword = 2 [(buf.validate.field) = {string: {min_len: 5, max_len: 50, pattern: "^[a-zA-Z0-9!@#$%^&*?-]*$"}}];
 	string accessToken = 3;
-  string refreshToken = 4;
 }
-message ChangePasswordRes {
+message ChangePasswordResponse {
   UserPrivateModel user = 1;
 	string accessToken = 2;
   string refreshToken = 3;
 }
 
 
-message GetUserByUsernameReq {
+message GetUserByUsernameRequest {
 	string accessToken = 1;
-  string refreshToken = 2;
-  string username = 3;
+  string username = 2 [(buf.validate.field) = {string: {min_len: 1, max_len: 20, pattern: "^[a-z0-9][a-z0-9_-]*$"}}];
 }
-message GetUserByUsernameRes {
+message GetUserByUsernameResponse {
   UserPublicModel user = 1;
 }
 
-message ChangeUsernameReq {
+message ChangeUsernameRequest {
 	string accessToken = 1;
-  string refreshToken = 2;
-  string username = 3;
+  string username = 2 [(buf.validate.field) = {string: {min_len: 1, max_len: 20, pattern: "^[a-z0-9][a-z0-9_-]*$"}}];
 }
-message ChangeUsernameRes {
+message ChangeUsernameResponse {
   UserPublicModel user = 1;
 }
 
-message DeleteUserReq {
+message DeleteUserRequest {
   string accessToken = 1;
-  string refreshToken = 2;
 }
-message DeleteUserRes {
+message DeleteUserResponse {
 	bool success = 1;
 }

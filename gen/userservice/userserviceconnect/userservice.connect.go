@@ -9,6 +9,7 @@ import (
 	context "context"
 	errors "errors"
 	userservice "github.com/ocenb/music-protos/gen/userservice"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	http "net/http"
 	strings "strings"
 )
@@ -67,8 +68,8 @@ const (
 type UserServiceClient interface {
 	Register(context.Context, *connect.Request[userservice.RegisterRequest]) (*connect.Response[userservice.RegisterResponse], error)
 	Login(context.Context, *connect.Request[userservice.LoginRequest]) (*connect.Response[userservice.LoginResponse], error)
-	Logout(context.Context, *connect.Request[userservice.LogoutRequest]) (*connect.Response[userservice.LogoutResponse], error)
-	LogoutAll(context.Context, *connect.Request[userservice.LogoutAllRequest]) (*connect.Response[userservice.LogoutAllResponse], error)
+	Logout(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutResponse], error)
+	LogoutAll(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutAllResponse], error)
 	Refresh(context.Context, *connect.Request[userservice.RefreshRequest]) (*connect.Response[userservice.RefreshResponse], error)
 	Verify(context.Context, *connect.Request[userservice.VerifyRequest]) (*connect.Response[userservice.VerifyResponse], error)
 	NewVerification(context.Context, *connect.Request[userservice.NewVerificationRequest]) (*connect.Response[userservice.NewVerificationResponse], error)
@@ -76,7 +77,7 @@ type UserServiceClient interface {
 	ChangePassword(context.Context, *connect.Request[userservice.ChangePasswordRequest]) (*connect.Response[userservice.ChangePasswordResponse], error)
 	GetUserByUsername(context.Context, *connect.Request[userservice.GetUserByUsernameRequest]) (*connect.Response[userservice.GetUserByUsernameResponse], error)
 	ChangeUsername(context.Context, *connect.Request[userservice.ChangeUsernameRequest]) (*connect.Response[userservice.ChangeUsernameResponse], error)
-	DeleteUser(context.Context, *connect.Request[userservice.DeleteUserRequest]) (*connect.Response[userservice.DeleteUserResponse], error)
+	DeleteUser(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.DeleteUserResponse], error)
 }
 
 // NewUserServiceClient constructs a client for the userservice.UserService service. By default, it
@@ -102,13 +103,13 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("Login")),
 			connect.WithClientOptions(opts...),
 		),
-		logout: connect.NewClient[userservice.LogoutRequest, userservice.LogoutResponse](
+		logout: connect.NewClient[emptypb.Empty, userservice.LogoutResponse](
 			httpClient,
 			baseURL+UserServiceLogoutProcedure,
 			connect.WithSchema(userServiceMethods.ByName("Logout")),
 			connect.WithClientOptions(opts...),
 		),
-		logoutAll: connect.NewClient[userservice.LogoutAllRequest, userservice.LogoutAllResponse](
+		logoutAll: connect.NewClient[emptypb.Empty, userservice.LogoutAllResponse](
 			httpClient,
 			baseURL+UserServiceLogoutAllProcedure,
 			connect.WithSchema(userServiceMethods.ByName("LogoutAll")),
@@ -156,7 +157,7 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(userServiceMethods.ByName("ChangeUsername")),
 			connect.WithClientOptions(opts...),
 		),
-		deleteUser: connect.NewClient[userservice.DeleteUserRequest, userservice.DeleteUserResponse](
+		deleteUser: connect.NewClient[emptypb.Empty, userservice.DeleteUserResponse](
 			httpClient,
 			baseURL+UserServiceDeleteUserProcedure,
 			connect.WithSchema(userServiceMethods.ByName("DeleteUser")),
@@ -169,8 +170,8 @@ func NewUserServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 type userServiceClient struct {
 	register          *connect.Client[userservice.RegisterRequest, userservice.RegisterResponse]
 	login             *connect.Client[userservice.LoginRequest, userservice.LoginResponse]
-	logout            *connect.Client[userservice.LogoutRequest, userservice.LogoutResponse]
-	logoutAll         *connect.Client[userservice.LogoutAllRequest, userservice.LogoutAllResponse]
+	logout            *connect.Client[emptypb.Empty, userservice.LogoutResponse]
+	logoutAll         *connect.Client[emptypb.Empty, userservice.LogoutAllResponse]
 	refresh           *connect.Client[userservice.RefreshRequest, userservice.RefreshResponse]
 	verify            *connect.Client[userservice.VerifyRequest, userservice.VerifyResponse]
 	newVerification   *connect.Client[userservice.NewVerificationRequest, userservice.NewVerificationResponse]
@@ -178,7 +179,7 @@ type userServiceClient struct {
 	changePassword    *connect.Client[userservice.ChangePasswordRequest, userservice.ChangePasswordResponse]
 	getUserByUsername *connect.Client[userservice.GetUserByUsernameRequest, userservice.GetUserByUsernameResponse]
 	changeUsername    *connect.Client[userservice.ChangeUsernameRequest, userservice.ChangeUsernameResponse]
-	deleteUser        *connect.Client[userservice.DeleteUserRequest, userservice.DeleteUserResponse]
+	deleteUser        *connect.Client[emptypb.Empty, userservice.DeleteUserResponse]
 }
 
 // Register calls userservice.UserService.Register.
@@ -192,12 +193,12 @@ func (c *userServiceClient) Login(ctx context.Context, req *connect.Request[user
 }
 
 // Logout calls userservice.UserService.Logout.
-func (c *userServiceClient) Logout(ctx context.Context, req *connect.Request[userservice.LogoutRequest]) (*connect.Response[userservice.LogoutResponse], error) {
+func (c *userServiceClient) Logout(ctx context.Context, req *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutResponse], error) {
 	return c.logout.CallUnary(ctx, req)
 }
 
 // LogoutAll calls userservice.UserService.LogoutAll.
-func (c *userServiceClient) LogoutAll(ctx context.Context, req *connect.Request[userservice.LogoutAllRequest]) (*connect.Response[userservice.LogoutAllResponse], error) {
+func (c *userServiceClient) LogoutAll(ctx context.Context, req *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutAllResponse], error) {
 	return c.logoutAll.CallUnary(ctx, req)
 }
 
@@ -237,7 +238,7 @@ func (c *userServiceClient) ChangeUsername(ctx context.Context, req *connect.Req
 }
 
 // DeleteUser calls userservice.UserService.DeleteUser.
-func (c *userServiceClient) DeleteUser(ctx context.Context, req *connect.Request[userservice.DeleteUserRequest]) (*connect.Response[userservice.DeleteUserResponse], error) {
+func (c *userServiceClient) DeleteUser(ctx context.Context, req *connect.Request[emptypb.Empty]) (*connect.Response[userservice.DeleteUserResponse], error) {
 	return c.deleteUser.CallUnary(ctx, req)
 }
 
@@ -245,8 +246,8 @@ func (c *userServiceClient) DeleteUser(ctx context.Context, req *connect.Request
 type UserServiceHandler interface {
 	Register(context.Context, *connect.Request[userservice.RegisterRequest]) (*connect.Response[userservice.RegisterResponse], error)
 	Login(context.Context, *connect.Request[userservice.LoginRequest]) (*connect.Response[userservice.LoginResponse], error)
-	Logout(context.Context, *connect.Request[userservice.LogoutRequest]) (*connect.Response[userservice.LogoutResponse], error)
-	LogoutAll(context.Context, *connect.Request[userservice.LogoutAllRequest]) (*connect.Response[userservice.LogoutAllResponse], error)
+	Logout(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutResponse], error)
+	LogoutAll(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutAllResponse], error)
 	Refresh(context.Context, *connect.Request[userservice.RefreshRequest]) (*connect.Response[userservice.RefreshResponse], error)
 	Verify(context.Context, *connect.Request[userservice.VerifyRequest]) (*connect.Response[userservice.VerifyResponse], error)
 	NewVerification(context.Context, *connect.Request[userservice.NewVerificationRequest]) (*connect.Response[userservice.NewVerificationResponse], error)
@@ -254,7 +255,7 @@ type UserServiceHandler interface {
 	ChangePassword(context.Context, *connect.Request[userservice.ChangePasswordRequest]) (*connect.Response[userservice.ChangePasswordResponse], error)
 	GetUserByUsername(context.Context, *connect.Request[userservice.GetUserByUsernameRequest]) (*connect.Response[userservice.GetUserByUsernameResponse], error)
 	ChangeUsername(context.Context, *connect.Request[userservice.ChangeUsernameRequest]) (*connect.Response[userservice.ChangeUsernameResponse], error)
-	DeleteUser(context.Context, *connect.Request[userservice.DeleteUserRequest]) (*connect.Response[userservice.DeleteUserResponse], error)
+	DeleteUser(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.DeleteUserResponse], error)
 }
 
 // NewUserServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -379,11 +380,11 @@ func (UnimplementedUserServiceHandler) Login(context.Context, *connect.Request[u
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("userservice.UserService.Login is not implemented"))
 }
 
-func (UnimplementedUserServiceHandler) Logout(context.Context, *connect.Request[userservice.LogoutRequest]) (*connect.Response[userservice.LogoutResponse], error) {
+func (UnimplementedUserServiceHandler) Logout(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("userservice.UserService.Logout is not implemented"))
 }
 
-func (UnimplementedUserServiceHandler) LogoutAll(context.Context, *connect.Request[userservice.LogoutAllRequest]) (*connect.Response[userservice.LogoutAllResponse], error) {
+func (UnimplementedUserServiceHandler) LogoutAll(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.LogoutAllResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("userservice.UserService.LogoutAll is not implemented"))
 }
 
@@ -415,6 +416,6 @@ func (UnimplementedUserServiceHandler) ChangeUsername(context.Context, *connect.
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("userservice.UserService.ChangeUsername is not implemented"))
 }
 
-func (UnimplementedUserServiceHandler) DeleteUser(context.Context, *connect.Request[userservice.DeleteUserRequest]) (*connect.Response[userservice.DeleteUserResponse], error) {
+func (UnimplementedUserServiceHandler) DeleteUser(context.Context, *connect.Request[emptypb.Empty]) (*connect.Response[userservice.DeleteUserResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("userservice.UserService.DeleteUser is not implemented"))
 }

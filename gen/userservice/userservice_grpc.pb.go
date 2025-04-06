@@ -29,6 +29,7 @@ const (
 	UserService_NewVerification_FullMethodName   = "/userservice.UserService/NewVerification"
 	UserService_ChangeEmail_FullMethodName       = "/userservice.UserService/ChangeEmail"
 	UserService_ChangePassword_FullMethodName    = "/userservice.UserService/ChangePassword"
+	UserService_CheckAuth_FullMethodName         = "/userservice.UserService/CheckAuth"
 	UserService_GetUserByUsername_FullMethodName = "/userservice.UserService/GetUserByUsername"
 	UserService_ChangeUsername_FullMethodName    = "/userservice.UserService/ChangeUsername"
 	UserService_DeleteUser_FullMethodName        = "/userservice.UserService/DeleteUser"
@@ -47,6 +48,7 @@ type UserServiceClient interface {
 	NewVerification(ctx context.Context, in *NewVerificationRequest, opts ...grpc.CallOption) (*NewVerificationResponse, error)
 	ChangeEmail(ctx context.Context, in *ChangeEmailRequest, opts ...grpc.CallOption) (*ChangeEmailResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error)
+	CheckAuth(ctx context.Context, in *CheckAuthRequest, opts ...grpc.CallOption) (*CheckAuthResponse, error)
 	GetUserByUsername(ctx context.Context, in *GetUserByUsernameRequest, opts ...grpc.CallOption) (*GetUserByUsernameResponse, error)
 	ChangeUsername(ctx context.Context, in *ChangeUsernameRequest, opts ...grpc.CallOption) (*ChangeUsernameResponse, error)
 	DeleteUser(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*DeleteUserResponse, error)
@@ -150,6 +152,16 @@ func (c *userServiceClient) ChangePassword(ctx context.Context, in *ChangePasswo
 	return out, nil
 }
 
+func (c *userServiceClient) CheckAuth(ctx context.Context, in *CheckAuthRequest, opts ...grpc.CallOption) (*CheckAuthResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CheckAuthResponse)
+	err := c.cc.Invoke(ctx, UserService_CheckAuth_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *userServiceClient) GetUserByUsername(ctx context.Context, in *GetUserByUsernameRequest, opts ...grpc.CallOption) (*GetUserByUsernameResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetUserByUsernameResponse)
@@ -193,6 +205,7 @@ type UserServiceServer interface {
 	NewVerification(context.Context, *NewVerificationRequest) (*NewVerificationResponse, error)
 	ChangeEmail(context.Context, *ChangeEmailRequest) (*ChangeEmailResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error)
+	CheckAuth(context.Context, *CheckAuthRequest) (*CheckAuthResponse, error)
 	GetUserByUsername(context.Context, *GetUserByUsernameRequest) (*GetUserByUsernameResponse, error)
 	ChangeUsername(context.Context, *ChangeUsernameRequest) (*ChangeUsernameResponse, error)
 	DeleteUser(context.Context, *emptypb.Empty) (*DeleteUserResponse, error)
@@ -232,6 +245,9 @@ func (UnimplementedUserServiceServer) ChangeEmail(context.Context, *ChangeEmailR
 }
 func (UnimplementedUserServiceServer) ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
+}
+func (UnimplementedUserServiceServer) CheckAuth(context.Context, *CheckAuthRequest) (*CheckAuthResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckAuth not implemented")
 }
 func (UnimplementedUserServiceServer) GetUserByUsername(context.Context, *GetUserByUsernameRequest) (*GetUserByUsernameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserByUsername not implemented")
@@ -425,6 +441,24 @@ func _UserService_ChangePassword_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_CheckAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CheckAuthRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).CheckAuth(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_CheckAuth_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).CheckAuth(ctx, req.(*CheckAuthRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UserService_GetUserByUsername_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetUserByUsernameRequest)
 	if err := dec(in); err != nil {
@@ -521,6 +555,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ChangePassword",
 			Handler:    _UserService_ChangePassword_Handler,
+		},
+		{
+			MethodName: "CheckAuth",
+			Handler:    _UserService_CheckAuth_Handler,
 		},
 		{
 			MethodName: "GetUserByUsername",

@@ -17,7 +17,7 @@ service UserService {
   rpc NewVerification (NewVerificationRequest) returns (NewVerificationResponse);
   rpc ChangeEmail (ChangeEmailRequest) returns (ChangeEmailResponse);
   rpc ChangePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
-	rpc CheckAuth (CheckAuthRequest) returns (CheckAuthResponse);
+	rpc CheckAuth (google.protobuf.Empty) returns (CheckAuthResponse);
 
 	rpc GetUserByUsername (GetUserByUsernameRequest) returns (GetUserByUsernameResponse);
 	rpc ChangeUsername (ChangeUsernameRequest) returns (ChangeUsernameResponse);
@@ -128,10 +128,6 @@ message DeleteUserResponse {
 	bool success = 1;
 }
 
-message CheckAuthRequest {
-  string accessToken = 1;
-  string refreshToken = 2;
-}
 message CheckAuthResponse {
   UserPrivateModel user = 1;
   string tokenId = 2;

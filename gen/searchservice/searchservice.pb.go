@@ -111,6 +111,146 @@ func (x *SearchResponse) GetIds() []int64 {
 	return nil
 }
 
+type AddOrUpdateRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddOrUpdateRequest) Reset() {
+	*x = AddOrUpdateRequest{}
+	mi := &file_searchservice_searchservice_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddOrUpdateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddOrUpdateRequest) ProtoMessage() {}
+
+func (x *AddOrUpdateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_searchservice_searchservice_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddOrUpdateRequest.ProtoReflect.Descriptor instead.
+func (*AddOrUpdateRequest) Descriptor() ([]byte, []int) {
+	return file_searchservice_searchservice_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AddOrUpdateRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *AddOrUpdateRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type DeleteRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRequest) Reset() {
+	*x = DeleteRequest{}
+	mi := &file_searchservice_searchservice_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRequest) ProtoMessage() {}
+
+func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_searchservice_searchservice_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRequest) Descriptor() ([]byte, []int) {
+	return file_searchservice_searchservice_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *DeleteRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type SuccessResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SuccessResponse) Reset() {
+	*x = SuccessResponse{}
+	mi := &file_searchservice_searchservice_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SuccessResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SuccessResponse) ProtoMessage() {}
+
+func (x *SuccessResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_searchservice_searchservice_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SuccessResponse.ProtoReflect.Descriptor instead.
+func (*SuccessResponse) Descriptor() ([]byte, []int) {
+	return file_searchservice_searchservice_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SuccessResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_searchservice_searchservice_proto protoreflect.FileDescriptor
 
 const file_searchservice_searchservice_proto_rawDesc = "" +
@@ -119,11 +259,29 @@ const file_searchservice_searchservice_proto_rawDesc = "" +
 	"\rSearchRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\"\"\n" +
 	"\x0eSearchResponse\x12\x10\n" +
-	"\x03ids\x18\x01 \x03(\x03R\x03ids2\xf3\x01\n" +
-	"\vUserService\x12J\n" +
+	"\x03ids\x18\x01 \x03(\x03R\x03ids\"8\n" +
+	"\x12AddOrUpdateRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"\x1f\n" +
+	"\rDeleteRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"+\n" +
+	"\x0fSuccessResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xbc\a\n" +
+	"\rSearchService\x12J\n" +
 	"\vSearchUsers\x12\x1c.searchservice.SearchRequest\x1a\x1d.searchservice.SearchResponse\x12K\n" +
 	"\fSearchAlbums\x12\x1c.searchservice.SearchRequest\x1a\x1d.searchservice.SearchResponse\x12K\n" +
-	"\fSearchTracks\x12\x1c.searchservice.SearchRequest\x1a\x1d.searchservice.SearchResponseB\xac\x01\n" +
+	"\fSearchTracks\x12\x1c.searchservice.SearchRequest\x1a\x1d.searchservice.SearchResponse\x12L\n" +
+	"\aAddUser\x12!.searchservice.AddOrUpdateRequest\x1a\x1e.searchservice.SuccessResponse\x12M\n" +
+	"\bAddAlbum\x12!.searchservice.AddOrUpdateRequest\x1a\x1e.searchservice.SuccessResponse\x12M\n" +
+	"\bAddTrack\x12!.searchservice.AddOrUpdateRequest\x1a\x1e.searchservice.SuccessResponse\x12O\n" +
+	"\n" +
+	"UpdateUser\x12!.searchservice.AddOrUpdateRequest\x1a\x1e.searchservice.SuccessResponse\x12P\n" +
+	"\vUpdateAlbum\x12!.searchservice.AddOrUpdateRequest\x1a\x1e.searchservice.SuccessResponse\x12P\n" +
+	"\vUpdateTrack\x12!.searchservice.AddOrUpdateRequest\x1a\x1e.searchservice.SuccessResponse\x12J\n" +
+	"\n" +
+	"DeleteUser\x12\x1c.searchservice.DeleteRequest\x1a\x1e.searchservice.SuccessResponse\x12K\n" +
+	"\vDeleteTrack\x12\x1c.searchservice.DeleteRequest\x1a\x1e.searchservice.SuccessResponse\x12K\n" +
+	"\vDeleteAlbum\x12\x1c.searchservice.DeleteRequest\x1a\x1e.searchservice.SuccessResponseB\xac\x01\n" +
 	"\x11com.searchserviceB\x12SearchserviceProtoP\x01Z/github.com/ocenb/music-protos/gen/searchservice\xa2\x02\x03SXX\xaa\x02\rSearchservice\xca\x02\rSearchservice\xe2\x02\x19Searchservice\\GPBMetadata\xea\x02\rSearchserviceb\x06proto3"
 
 var (
@@ -138,23 +296,44 @@ func file_searchservice_searchservice_proto_rawDescGZIP() []byte {
 	return file_searchservice_searchservice_proto_rawDescData
 }
 
-var file_searchservice_searchservice_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_searchservice_searchservice_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_searchservice_searchservice_proto_goTypes = []any{
-	(*SearchRequest)(nil),  // 0: searchservice.SearchRequest
-	(*SearchResponse)(nil), // 1: searchservice.SearchResponse
+	(*SearchRequest)(nil),      // 0: searchservice.SearchRequest
+	(*SearchResponse)(nil),     // 1: searchservice.SearchResponse
+	(*AddOrUpdateRequest)(nil), // 2: searchservice.AddOrUpdateRequest
+	(*DeleteRequest)(nil),      // 3: searchservice.DeleteRequest
+	(*SuccessResponse)(nil),    // 4: searchservice.SuccessResponse
 }
 var file_searchservice_searchservice_proto_depIdxs = []int32{
-	0, // 0: searchservice.UserService.SearchUsers:input_type -> searchservice.SearchRequest
-	0, // 1: searchservice.UserService.SearchAlbums:input_type -> searchservice.SearchRequest
-	0, // 2: searchservice.UserService.SearchTracks:input_type -> searchservice.SearchRequest
-	1, // 3: searchservice.UserService.SearchUsers:output_type -> searchservice.SearchResponse
-	1, // 4: searchservice.UserService.SearchAlbums:output_type -> searchservice.SearchResponse
-	1, // 5: searchservice.UserService.SearchTracks:output_type -> searchservice.SearchResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: searchservice.SearchService.SearchUsers:input_type -> searchservice.SearchRequest
+	0,  // 1: searchservice.SearchService.SearchAlbums:input_type -> searchservice.SearchRequest
+	0,  // 2: searchservice.SearchService.SearchTracks:input_type -> searchservice.SearchRequest
+	2,  // 3: searchservice.SearchService.AddUser:input_type -> searchservice.AddOrUpdateRequest
+	2,  // 4: searchservice.SearchService.AddAlbum:input_type -> searchservice.AddOrUpdateRequest
+	2,  // 5: searchservice.SearchService.AddTrack:input_type -> searchservice.AddOrUpdateRequest
+	2,  // 6: searchservice.SearchService.UpdateUser:input_type -> searchservice.AddOrUpdateRequest
+	2,  // 7: searchservice.SearchService.UpdateAlbum:input_type -> searchservice.AddOrUpdateRequest
+	2,  // 8: searchservice.SearchService.UpdateTrack:input_type -> searchservice.AddOrUpdateRequest
+	3,  // 9: searchservice.SearchService.DeleteUser:input_type -> searchservice.DeleteRequest
+	3,  // 10: searchservice.SearchService.DeleteTrack:input_type -> searchservice.DeleteRequest
+	3,  // 11: searchservice.SearchService.DeleteAlbum:input_type -> searchservice.DeleteRequest
+	1,  // 12: searchservice.SearchService.SearchUsers:output_type -> searchservice.SearchResponse
+	1,  // 13: searchservice.SearchService.SearchAlbums:output_type -> searchservice.SearchResponse
+	1,  // 14: searchservice.SearchService.SearchTracks:output_type -> searchservice.SearchResponse
+	4,  // 15: searchservice.SearchService.AddUser:output_type -> searchservice.SuccessResponse
+	4,  // 16: searchservice.SearchService.AddAlbum:output_type -> searchservice.SuccessResponse
+	4,  // 17: searchservice.SearchService.AddTrack:output_type -> searchservice.SuccessResponse
+	4,  // 18: searchservice.SearchService.UpdateUser:output_type -> searchservice.SuccessResponse
+	4,  // 19: searchservice.SearchService.UpdateAlbum:output_type -> searchservice.SuccessResponse
+	4,  // 20: searchservice.SearchService.UpdateTrack:output_type -> searchservice.SuccessResponse
+	4,  // 21: searchservice.SearchService.DeleteUser:output_type -> searchservice.SuccessResponse
+	4,  // 22: searchservice.SearchService.DeleteTrack:output_type -> searchservice.SuccessResponse
+	4,  // 23: searchservice.SearchService.DeleteAlbum:output_type -> searchservice.SuccessResponse
+	12, // [12:24] is the sub-list for method output_type
+	0,  // [0:12] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_searchservice_searchservice_proto_init() }
@@ -168,7 +347,7 @@ func file_searchservice_searchservice_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_searchservice_searchservice_proto_rawDesc), len(file_searchservice_searchservice_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

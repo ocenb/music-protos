@@ -7,10 +7,19 @@ option go_package = "github.com/ocenb/music-protos/gen/searchservice";
 import "google/protobuf/empty.proto";
 import "buf/validate/validate.proto";
 
-service UserService {
+service SearchService {
   rpc SearchUsers (SearchRequest) returns (SearchResponse);
   rpc SearchAlbums (SearchRequest) returns (SearchResponse);
   rpc SearchTracks (SearchRequest) returns (SearchResponse);
+  rpc AddUser (AddOrUpdateRequest) returns (SuccessResponse);
+  rpc AddAlbum (AddOrUpdateRequest) returns (SuccessResponse);
+  rpc AddTrack (AddOrUpdateRequest) returns (SuccessResponse);
+  rpc UpdateUser (AddOrUpdateRequest) returns (SuccessResponse);
+  rpc UpdateAlbum (AddOrUpdateRequest) returns (SuccessResponse);
+  rpc UpdateTrack (AddOrUpdateRequest) returns (SuccessResponse);
+  rpc DeleteUser (DeleteRequest) returns (SuccessResponse);
+  rpc DeleteTrack (DeleteRequest) returns (SuccessResponse);
+  rpc DeleteAlbum (DeleteRequest) returns (SuccessResponse);
 }
 
 message SearchRequest {
@@ -19,4 +28,17 @@ message SearchRequest {
 
 message SearchResponse {
   repeated int64 ids = 1;
+}
+
+message AddOrUpdateRequest {
+	int64 id = 1;
+	string name = 2;
+}
+
+message DeleteRequest {
+	int64 id = 1;
+}
+
+message SuccessResponse {
+	bool success = 1;
 }

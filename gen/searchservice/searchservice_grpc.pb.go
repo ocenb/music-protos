@@ -19,177 +19,519 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_SearchUsers_FullMethodName  = "/searchservice.UserService/SearchUsers"
-	UserService_SearchAlbums_FullMethodName = "/searchservice.UserService/SearchAlbums"
-	UserService_SearchTracks_FullMethodName = "/searchservice.UserService/SearchTracks"
+	SearchService_SearchUsers_FullMethodName  = "/searchservice.SearchService/SearchUsers"
+	SearchService_SearchAlbums_FullMethodName = "/searchservice.SearchService/SearchAlbums"
+	SearchService_SearchTracks_FullMethodName = "/searchservice.SearchService/SearchTracks"
+	SearchService_AddUser_FullMethodName      = "/searchservice.SearchService/AddUser"
+	SearchService_AddAlbum_FullMethodName     = "/searchservice.SearchService/AddAlbum"
+	SearchService_AddTrack_FullMethodName     = "/searchservice.SearchService/AddTrack"
+	SearchService_UpdateUser_FullMethodName   = "/searchservice.SearchService/UpdateUser"
+	SearchService_UpdateAlbum_FullMethodName  = "/searchservice.SearchService/UpdateAlbum"
+	SearchService_UpdateTrack_FullMethodName  = "/searchservice.SearchService/UpdateTrack"
+	SearchService_DeleteUser_FullMethodName   = "/searchservice.SearchService/DeleteUser"
+	SearchService_DeleteTrack_FullMethodName  = "/searchservice.SearchService/DeleteTrack"
+	SearchService_DeleteAlbum_FullMethodName  = "/searchservice.SearchService/DeleteAlbum"
 )
 
-// UserServiceClient is the client API for UserService service.
+// SearchServiceClient is the client API for SearchService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UserServiceClient interface {
+type SearchServiceClient interface {
 	SearchUsers(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	SearchAlbums(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	SearchTracks(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
+	AddUser(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	AddAlbum(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	AddTrack(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	UpdateUser(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	UpdateAlbum(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	UpdateTrack(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	DeleteUser(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	DeleteTrack(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
+	DeleteAlbum(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SuccessResponse, error)
 }
 
-type userServiceClient struct {
+type searchServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
-	return &userServiceClient{cc}
+func NewSearchServiceClient(cc grpc.ClientConnInterface) SearchServiceClient {
+	return &searchServiceClient{cc}
 }
 
-func (c *userServiceClient) SearchUsers(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
+func (c *searchServiceClient) SearchUsers(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SearchResponse)
-	err := c.cc.Invoke(ctx, UserService_SearchUsers_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, SearchService_SearchUsers_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) SearchAlbums(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
+func (c *searchServiceClient) SearchAlbums(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SearchResponse)
-	err := c.cc.Invoke(ctx, UserService_SearchAlbums_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, SearchService_SearchAlbums_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) SearchTracks(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
+func (c *searchServiceClient) SearchTracks(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SearchResponse)
-	err := c.cc.Invoke(ctx, UserService_SearchTracks_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, SearchService_SearchTracks_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UserServiceServer is the server API for UserService service.
-// All implementations must embed UnimplementedUserServiceServer
+func (c *searchServiceClient) AddUser(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_AddUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) AddAlbum(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_AddAlbum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) AddTrack(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_AddTrack_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) UpdateUser(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_UpdateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) UpdateAlbum(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_UpdateAlbum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) UpdateTrack(ctx context.Context, in *AddOrUpdateRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_UpdateTrack_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) DeleteUser(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_DeleteUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) DeleteTrack(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_DeleteTrack_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *searchServiceClient) DeleteAlbum(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*SuccessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SuccessResponse)
+	err := c.cc.Invoke(ctx, SearchService_DeleteAlbum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SearchServiceServer is the server API for SearchService service.
+// All implementations must embed UnimplementedSearchServiceServer
 // for forward compatibility.
-type UserServiceServer interface {
+type SearchServiceServer interface {
 	SearchUsers(context.Context, *SearchRequest) (*SearchResponse, error)
 	SearchAlbums(context.Context, *SearchRequest) (*SearchResponse, error)
 	SearchTracks(context.Context, *SearchRequest) (*SearchResponse, error)
-	mustEmbedUnimplementedUserServiceServer()
+	AddUser(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error)
+	AddAlbum(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error)
+	AddTrack(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error)
+	UpdateUser(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error)
+	UpdateAlbum(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error)
+	UpdateTrack(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error)
+	DeleteUser(context.Context, *DeleteRequest) (*SuccessResponse, error)
+	DeleteTrack(context.Context, *DeleteRequest) (*SuccessResponse, error)
+	DeleteAlbum(context.Context, *DeleteRequest) (*SuccessResponse, error)
+	mustEmbedUnimplementedSearchServiceServer()
 }
 
-// UnimplementedUserServiceServer must be embedded to have
+// UnimplementedSearchServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedUserServiceServer struct{}
+type UnimplementedSearchServiceServer struct{}
 
-func (UnimplementedUserServiceServer) SearchUsers(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedSearchServiceServer) SearchUsers(context.Context, *SearchRequest) (*SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchUsers not implemented")
 }
-func (UnimplementedUserServiceServer) SearchAlbums(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedSearchServiceServer) SearchAlbums(context.Context, *SearchRequest) (*SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchAlbums not implemented")
 }
-func (UnimplementedUserServiceServer) SearchTracks(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedSearchServiceServer) SearchTracks(context.Context, *SearchRequest) (*SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchTracks not implemented")
 }
-func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
-func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
+func (UnimplementedSearchServiceServer) AddUser(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddUser not implemented")
+}
+func (UnimplementedSearchServiceServer) AddAlbum(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddAlbum not implemented")
+}
+func (UnimplementedSearchServiceServer) AddTrack(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddTrack not implemented")
+}
+func (UnimplementedSearchServiceServer) UpdateUser(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+}
+func (UnimplementedSearchServiceServer) UpdateAlbum(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAlbum not implemented")
+}
+func (UnimplementedSearchServiceServer) UpdateTrack(context.Context, *AddOrUpdateRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTrack not implemented")
+}
+func (UnimplementedSearchServiceServer) DeleteUser(context.Context, *DeleteRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+}
+func (UnimplementedSearchServiceServer) DeleteTrack(context.Context, *DeleteRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTrack not implemented")
+}
+func (UnimplementedSearchServiceServer) DeleteAlbum(context.Context, *DeleteRequest) (*SuccessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAlbum not implemented")
+}
+func (UnimplementedSearchServiceServer) mustEmbedUnimplementedSearchServiceServer() {}
+func (UnimplementedSearchServiceServer) testEmbeddedByValue()                       {}
 
-// UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UserServiceServer will
+// UnsafeSearchServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SearchServiceServer will
 // result in compilation errors.
-type UnsafeUserServiceServer interface {
-	mustEmbedUnimplementedUserServiceServer()
+type UnsafeSearchServiceServer interface {
+	mustEmbedUnimplementedSearchServiceServer()
 }
 
-func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) {
-	// If the following call pancis, it indicates UnimplementedUserServiceServer was
+func RegisterSearchServiceServer(s grpc.ServiceRegistrar, srv SearchServiceServer) {
+	// If the following call pancis, it indicates UnimplementedSearchServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&UserService_ServiceDesc, srv)
+	s.RegisterService(&SearchService_ServiceDesc, srv)
 }
 
-func _UserService_SearchUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SearchService_SearchUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).SearchUsers(ctx, in)
+		return srv.(SearchServiceServer).SearchUsers(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_SearchUsers_FullMethodName,
+		FullMethod: SearchService_SearchUsers_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).SearchUsers(ctx, req.(*SearchRequest))
+		return srv.(SearchServiceServer).SearchUsers(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_SearchAlbums_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SearchService_SearchAlbums_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).SearchAlbums(ctx, in)
+		return srv.(SearchServiceServer).SearchAlbums(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_SearchAlbums_FullMethodName,
+		FullMethod: SearchService_SearchAlbums_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).SearchAlbums(ctx, req.(*SearchRequest))
+		return srv.(SearchServiceServer).SearchAlbums(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_SearchTracks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SearchService_SearchTracks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).SearchTracks(ctx, in)
+		return srv.(SearchServiceServer).SearchTracks(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_SearchTracks_FullMethodName,
+		FullMethod: SearchService_SearchTracks_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).SearchTracks(ctx, req.(*SearchRequest))
+		return srv.(SearchServiceServer).SearchTracks(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
+func _SearchService_AddUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddOrUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).AddUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_AddUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).AddUser(ctx, req.(*AddOrUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_AddAlbum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddOrUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).AddAlbum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_AddAlbum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).AddAlbum(ctx, req.(*AddOrUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_AddTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddOrUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).AddTrack(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_AddTrack_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).AddTrack(ctx, req.(*AddOrUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddOrUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).UpdateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_UpdateUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).UpdateUser(ctx, req.(*AddOrUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_UpdateAlbum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddOrUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).UpdateAlbum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_UpdateAlbum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).UpdateAlbum(ctx, req.(*AddOrUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_UpdateTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddOrUpdateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).UpdateTrack(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_UpdateTrack_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).UpdateTrack(ctx, req.(*AddOrUpdateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).DeleteUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_DeleteUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).DeleteUser(ctx, req.(*DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_DeleteTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).DeleteTrack(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_DeleteTrack_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).DeleteTrack(ctx, req.(*DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SearchService_DeleteAlbum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SearchServiceServer).DeleteAlbum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SearchService_DeleteAlbum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SearchServiceServer).DeleteAlbum(ctx, req.(*DeleteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// SearchService_ServiceDesc is the grpc.ServiceDesc for SearchService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var UserService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "searchservice.UserService",
-	HandlerType: (*UserServiceServer)(nil),
+var SearchService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "searchservice.SearchService",
+	HandlerType: (*SearchServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "SearchUsers",
-			Handler:    _UserService_SearchUsers_Handler,
+			Handler:    _SearchService_SearchUsers_Handler,
 		},
 		{
 			MethodName: "SearchAlbums",
-			Handler:    _UserService_SearchAlbums_Handler,
+			Handler:    _SearchService_SearchAlbums_Handler,
 		},
 		{
 			MethodName: "SearchTracks",
-			Handler:    _UserService_SearchTracks_Handler,
+			Handler:    _SearchService_SearchTracks_Handler,
+		},
+		{
+			MethodName: "AddUser",
+			Handler:    _SearchService_AddUser_Handler,
+		},
+		{
+			MethodName: "AddAlbum",
+			Handler:    _SearchService_AddAlbum_Handler,
+		},
+		{
+			MethodName: "AddTrack",
+			Handler:    _SearchService_AddTrack_Handler,
+		},
+		{
+			MethodName: "UpdateUser",
+			Handler:    _SearchService_UpdateUser_Handler,
+		},
+		{
+			MethodName: "UpdateAlbum",
+			Handler:    _SearchService_UpdateAlbum_Handler,
+		},
+		{
+			MethodName: "UpdateTrack",
+			Handler:    _SearchService_UpdateTrack_Handler,
+		},
+		{
+			MethodName: "DeleteUser",
+			Handler:    _SearchService_DeleteUser_Handler,
+		},
+		{
+			MethodName: "DeleteTrack",
+			Handler:    _SearchService_DeleteTrack_Handler,
+		},
+		{
+			MethodName: "DeleteAlbum",
+			Handler:    _SearchService_DeleteAlbum_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

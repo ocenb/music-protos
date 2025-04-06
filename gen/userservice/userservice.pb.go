@@ -1195,58 +1195,6 @@ func (x *DeleteUserResponse) GetSuccess() bool {
 	return false
 }
 
-type CheckAuthRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=accessToken,proto3" json:"accessToken,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refreshToken,proto3" json:"refreshToken,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CheckAuthRequest) Reset() {
-	*x = CheckAuthRequest{}
-	mi := &file_userservice_userservice_proto_msgTypes[23]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CheckAuthRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CheckAuthRequest) ProtoMessage() {}
-
-func (x *CheckAuthRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[23]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CheckAuthRequest.ProtoReflect.Descriptor instead.
-func (*CheckAuthRequest) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *CheckAuthRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
-}
-
-func (x *CheckAuthRequest) GetRefreshToken() string {
-	if x != nil {
-		return x.RefreshToken
-	}
-	return ""
-}
-
 type CheckAuthResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *UserPrivateModel      `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
@@ -1257,7 +1205,7 @@ type CheckAuthResponse struct {
 
 func (x *CheckAuthResponse) Reset() {
 	*x = CheckAuthResponse{}
-	mi := &file_userservice_userservice_proto_msgTypes[24]
+	mi := &file_userservice_userservice_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1269,7 +1217,7 @@ func (x *CheckAuthResponse) String() string {
 func (*CheckAuthResponse) ProtoMessage() {}
 
 func (x *CheckAuthResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[24]
+	mi := &file_userservice_userservice_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1282,7 +1230,7 @@ func (x *CheckAuthResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckAuthResponse.ProtoReflect.Descriptor instead.
 func (*CheckAuthResponse) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{24}
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CheckAuthResponse) GetUser() *UserPrivateModel {
@@ -1369,13 +1317,10 @@ const file_userservice_userservice_proto_rawDesc = "" +
 	"\x16ChangeUsernameResponse\x120\n" +
 	"\x04user\x18\x01 \x01(\v2\x1c.userservice.UserPublicModelR\x04user\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"X\n" +
-	"\x10CheckAuthRequest\x12 \n" +
-	"\vaccessToken\x18\x01 \x01(\tR\vaccessToken\x12\"\n" +
-	"\frefreshToken\x18\x02 \x01(\tR\frefreshToken\"`\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"`\n" +
 	"\x11CheckAuthResponse\x121\n" +
 	"\x04user\x18\x01 \x01(\v2\x1d.userservice.UserPrivateModelR\x04user\x12\x18\n" +
-	"\atokenId\x18\x02 \x01(\tR\atokenId2\x80\b\n" +
+	"\atokenId\x18\x02 \x01(\tR\atokenId2\xf9\a\n" +
 	"\vUserService\x12G\n" +
 	"\bRegister\x12\x1c.userservice.RegisterRequest\x1a\x1d.userservice.RegisterResponse\x12>\n" +
 	"\x05Login\x12\x19.userservice.LoginRequest\x1a\x1a.userservice.LoginResponse\x12=\n" +
@@ -1385,8 +1330,8 @@ const file_userservice_userservice_proto_rawDesc = "" +
 	"\x06Verify\x12\x1a.userservice.VerifyRequest\x1a\x1b.userservice.VerifyResponse\x12\\\n" +
 	"\x0fNewVerification\x12#.userservice.NewVerificationRequest\x1a$.userservice.NewVerificationResponse\x12P\n" +
 	"\vChangeEmail\x12\x1f.userservice.ChangeEmailRequest\x1a .userservice.ChangeEmailResponse\x12Y\n" +
-	"\x0eChangePassword\x12\".userservice.ChangePasswordRequest\x1a#.userservice.ChangePasswordResponse\x12J\n" +
-	"\tCheckAuth\x12\x1d.userservice.CheckAuthRequest\x1a\x1e.userservice.CheckAuthResponse\x12b\n" +
+	"\x0eChangePassword\x12\".userservice.ChangePasswordRequest\x1a#.userservice.ChangePasswordResponse\x12C\n" +
+	"\tCheckAuth\x12\x16.google.protobuf.Empty\x1a\x1e.userservice.CheckAuthResponse\x12b\n" +
 	"\x11GetUserByUsername\x12%.userservice.GetUserByUsernameRequest\x1a&.userservice.GetUserByUsernameResponse\x12Y\n" +
 	"\x0eChangeUsername\x12\".userservice.ChangeUsernameRequest\x1a#.userservice.ChangeUsernameResponse\x12E\n" +
 	"\n" +
@@ -1405,7 +1350,7 @@ func file_userservice_userservice_proto_rawDescGZIP() []byte {
 	return file_userservice_userservice_proto_rawDescData
 }
 
-var file_userservice_userservice_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_userservice_userservice_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_userservice_userservice_proto_goTypes = []any{
 	(*UserPrivateModel)(nil),          // 0: userservice.UserPrivateModel
 	(*UserPublicModel)(nil),           // 1: userservice.UserPublicModel
@@ -1430,9 +1375,8 @@ var file_userservice_userservice_proto_goTypes = []any{
 	(*ChangeUsernameRequest)(nil),     // 20: userservice.ChangeUsernameRequest
 	(*ChangeUsernameResponse)(nil),    // 21: userservice.ChangeUsernameResponse
 	(*DeleteUserResponse)(nil),        // 22: userservice.DeleteUserResponse
-	(*CheckAuthRequest)(nil),          // 23: userservice.CheckAuthRequest
-	(*CheckAuthResponse)(nil),         // 24: userservice.CheckAuthResponse
-	(*emptypb.Empty)(nil),             // 25: google.protobuf.Empty
+	(*CheckAuthResponse)(nil),         // 23: userservice.CheckAuthResponse
+	(*emptypb.Empty)(nil),             // 24: google.protobuf.Empty
 }
 var file_userservice_userservice_proto_depIdxs = []int32{
 	0,  // 0: userservice.RegisterResponse.user:type_name -> userservice.UserPrivateModel
@@ -1447,17 +1391,17 @@ var file_userservice_userservice_proto_depIdxs = []int32{
 	0,  // 9: userservice.CheckAuthResponse.user:type_name -> userservice.UserPrivateModel
 	2,  // 10: userservice.UserService.Register:input_type -> userservice.RegisterRequest
 	4,  // 11: userservice.UserService.Login:input_type -> userservice.LoginRequest
-	25, // 12: userservice.UserService.Logout:input_type -> google.protobuf.Empty
-	25, // 13: userservice.UserService.LogoutAll:input_type -> google.protobuf.Empty
+	24, // 12: userservice.UserService.Logout:input_type -> google.protobuf.Empty
+	24, // 13: userservice.UserService.LogoutAll:input_type -> google.protobuf.Empty
 	8,  // 14: userservice.UserService.Refresh:input_type -> userservice.RefreshRequest
 	10, // 15: userservice.UserService.Verify:input_type -> userservice.VerifyRequest
 	12, // 16: userservice.UserService.NewVerification:input_type -> userservice.NewVerificationRequest
 	14, // 17: userservice.UserService.ChangeEmail:input_type -> userservice.ChangeEmailRequest
 	16, // 18: userservice.UserService.ChangePassword:input_type -> userservice.ChangePasswordRequest
-	23, // 19: userservice.UserService.CheckAuth:input_type -> userservice.CheckAuthRequest
+	24, // 19: userservice.UserService.CheckAuth:input_type -> google.protobuf.Empty
 	18, // 20: userservice.UserService.GetUserByUsername:input_type -> userservice.GetUserByUsernameRequest
 	20, // 21: userservice.UserService.ChangeUsername:input_type -> userservice.ChangeUsernameRequest
-	25, // 22: userservice.UserService.DeleteUser:input_type -> google.protobuf.Empty
+	24, // 22: userservice.UserService.DeleteUser:input_type -> google.protobuf.Empty
 	3,  // 23: userservice.UserService.Register:output_type -> userservice.RegisterResponse
 	5,  // 24: userservice.UserService.Login:output_type -> userservice.LoginResponse
 	6,  // 25: userservice.UserService.Logout:output_type -> userservice.LogoutResponse
@@ -1467,7 +1411,7 @@ var file_userservice_userservice_proto_depIdxs = []int32{
 	13, // 29: userservice.UserService.NewVerification:output_type -> userservice.NewVerificationResponse
 	15, // 30: userservice.UserService.ChangeEmail:output_type -> userservice.ChangeEmailResponse
 	17, // 31: userservice.UserService.ChangePassword:output_type -> userservice.ChangePasswordResponse
-	24, // 32: userservice.UserService.CheckAuth:output_type -> userservice.CheckAuthResponse
+	23, // 32: userservice.UserService.CheckAuth:output_type -> userservice.CheckAuthResponse
 	19, // 33: userservice.UserService.GetUserByUsername:output_type -> userservice.GetUserByUsernameResponse
 	21, // 34: userservice.UserService.ChangeUsername:output_type -> userservice.ChangeUsernameResponse
 	22, // 35: userservice.UserService.DeleteUser:output_type -> userservice.DeleteUserResponse
@@ -1489,7 +1433,7 @@ func file_userservice_userservice_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_userservice_userservice_proto_rawDesc), len(file_userservice_userservice_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

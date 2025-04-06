@@ -33,6 +33,9 @@ const (
 	UserService_GetUserByUsername_FullMethodName = "/userservice.UserService/GetUserByUsername"
 	UserService_ChangeUsername_FullMethodName    = "/userservice.UserService/ChangeUsername"
 	UserService_DeleteUser_FullMethodName        = "/userservice.UserService/DeleteUser"
+	UserService_CheckFollow_FullMethodName       = "/userservice.UserService/CheckFollow"
+	UserService_Follow_FullMethodName            = "/userservice.UserService/Follow"
+	UserService_Unfollow_FullMethodName          = "/userservice.UserService/Unfollow"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -52,6 +55,9 @@ type UserServiceClient interface {
 	GetUserByUsername(ctx context.Context, in *GetUserByUsernameRequest, opts ...grpc.CallOption) (*GetUserByUsernameResponse, error)
 	ChangeUsername(ctx context.Context, in *ChangeUsernameRequest, opts ...grpc.CallOption) (*ChangeUsernameResponse, error)
 	DeleteUser(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*DeleteUserResponse, error)
+	CheckFollow(ctx context.Context, in *CheckFollowRequest, opts ...grpc.CallOption) (*CheckFollowResponse, error)
+	Follow(ctx context.Context, in *FollowRequest, opts ...grpc.CallOption) (*FollowResponse, error)
+	Unfollow(ctx context.Context, in *UnfollowRequest, opts ...grpc.CallOption) (*UnfollowResponse, error)
 }
 
 type userServiceClient struct {
@@ -192,6 +198,36 @@ func (c *userServiceClient) DeleteUser(ctx context.Context, in *emptypb.Empty, o
 	return out, nil
 }
 
+func (c *userServiceClient) CheckFollow(ctx context.Context, in *CheckFollowRequest, opts ...grpc.CallOption) (*CheckFollowResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CheckFollowResponse)
+	err := c.cc.Invoke(ctx, UserService_CheckFollow_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Follow(ctx context.Context, in *FollowRequest, opts ...grpc.CallOption) (*FollowResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FollowResponse)
+	err := c.cc.Invoke(ctx, UserService_Follow_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Unfollow(ctx context.Context, in *UnfollowRequest, opts ...grpc.CallOption) (*UnfollowResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UnfollowResponse)
+	err := c.cc.Invoke(ctx, UserService_Unfollow_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -209,6 +245,9 @@ type UserServiceServer interface {
 	GetUserByUsername(context.Context, *GetUserByUsernameRequest) (*GetUserByUsernameResponse, error)
 	ChangeUsername(context.Context, *ChangeUsernameRequest) (*ChangeUsernameResponse, error)
 	DeleteUser(context.Context, *emptypb.Empty) (*DeleteUserResponse, error)
+	CheckFollow(context.Context, *CheckFollowRequest) (*CheckFollowResponse, error)
+	Follow(context.Context, *FollowRequest) (*FollowResponse, error)
+	Unfollow(context.Context, *UnfollowRequest) (*UnfollowResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -257,6 +296,15 @@ func (UnimplementedUserServiceServer) ChangeUsername(context.Context, *ChangeUse
 }
 func (UnimplementedUserServiceServer) DeleteUser(context.Context, *emptypb.Empty) (*DeleteUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+}
+func (UnimplementedUserServiceServer) CheckFollow(context.Context, *CheckFollowRequest) (*CheckFollowResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckFollow not implemented")
+}
+func (UnimplementedUserServiceServer) Follow(context.Context, *FollowRequest) (*FollowResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Follow not implemented")
+}
+func (UnimplementedUserServiceServer) Unfollow(context.Context, *UnfollowRequest) (*UnfollowResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Unfollow not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -513,6 +561,60 @@ func _UserService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_CheckFollow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CheckFollowRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).CheckFollow(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_CheckFollow_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).CheckFollow(ctx, req.(*CheckFollowRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Follow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FollowRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Follow(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Follow_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Follow(ctx, req.(*FollowRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Unfollow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnfollowRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Unfollow(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Unfollow_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Unfollow(ctx, req.(*UnfollowRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -571,6 +673,18 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteUser",
 			Handler:    _UserService_DeleteUser_Handler,
+		},
+		{
+			MethodName: "CheckFollow",
+			Handler:    _UserService_CheckFollow_Handler,
+		},
+		{
+			MethodName: "Follow",
+			Handler:    _UserService_Follow_Handler,
+		},
+		{
+			MethodName: "Unfollow",
+			Handler:    _UserService_Unfollow_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

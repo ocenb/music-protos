@@ -7,10 +7,8 @@
 package searchservice
 
 import (
-	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	_ "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -255,7 +253,7 @@ var File_searchservice_searchservice_proto protoreflect.FileDescriptor
 
 const file_searchservice_searchservice_proto_rawDesc = "" +
 	"\n" +
-	"!searchservice/searchservice.proto\x12\rsearchservice\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1bbuf/validate/validate.proto\"%\n" +
+	"!searchservice/searchservice.proto\x12\rsearchservice\"%\n" +
 	"\rSearchRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\"\"\n" +
 	"\x0eSearchResponse\x12\x10\n" +

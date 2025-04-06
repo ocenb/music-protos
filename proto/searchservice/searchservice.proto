@@ -4,9 +4,6 @@ package searchservice;
 
 option go_package = "github.com/ocenb/music-protos/gen/searchservice";
 
-import "google/protobuf/empty.proto";
-import "buf/validate/validate.proto";
-
 service SearchService {
   rpc SearchUsers (SearchRequest) returns (SearchResponse);
   rpc SearchAlbums (SearchRequest) returns (SearchResponse);

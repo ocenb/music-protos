@@ -22,8 +22,10 @@ service UserService {
 	rpc GetUserByUsername (GetUserByUsernameRequest) returns (GetUserByUsernameResponse);
 	rpc ChangeUsername (ChangeUsernameRequest) returns (ChangeUsernameResponse);
 	rpc DeleteUser (google.protobuf.Empty) returns (DeleteUserResponse);
+	rpc CheckFollow (CheckFollowRequest) returns (CheckFollowResponse);
+	rpc Follow (FollowRequest) returns (FollowResponse);
+	rpc Unfollow (UnfollowRequest) returns (UnfollowResponse);
 }
-
 
 message UserPrivateModel {
   int64 id = 1;
@@ -109,6 +111,11 @@ message ChangePasswordResponse {
   string refreshToken = 3;
 }
 
+message CheckAuthResponse {
+  UserPrivateModel user = 1;
+  string tokenId = 2;
+}
+
 
 message GetUserByUsernameRequest {
   string username = 1 [(buf.validate.field) = {string: {min_len: 1, max_len: 20, pattern: "^[a-z0-9][a-z0-9_-]*$"}}];
@@ -128,7 +135,26 @@ message DeleteUserResponse {
 	bool success = 1;
 }
 
-message CheckAuthResponse {
-  UserPrivateModel user = 1;
-  string tokenId = 2;
+message CheckFollowRequest {
+  int64 currentUserId = 1;
+  int64 userId = 2;
+}
+message CheckFollowResponse {
+  bool isFollowed = 1;
+}
+
+message FollowRequest {
+  int64 currentUserId = 1;
+  int64 userId = 2;
+}
+message FollowResponse {
+  bool success = 1;
+}
+
+message UnfollowRequest {
+  int64 currentUserId = 1;
+  int64 userId = 2;
+}
+message UnfollowResponse {
+  bool success = 1;
 }

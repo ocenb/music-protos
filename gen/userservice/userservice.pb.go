@@ -975,6 +975,58 @@ func (x *ChangePasswordResponse) GetRefreshToken() string {
 	return ""
 }
 
+type CheckAuthResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *UserPrivateModel      `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	TokenId       string                 `protobuf:"bytes,2,opt,name=tokenId,proto3" json:"tokenId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CheckAuthResponse) Reset() {
+	*x = CheckAuthResponse{}
+	mi := &file_userservice_userservice_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CheckAuthResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckAuthResponse) ProtoMessage() {}
+
+func (x *CheckAuthResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_userservice_userservice_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckAuthResponse.ProtoReflect.Descriptor instead.
+func (*CheckAuthResponse) Descriptor() ([]byte, []int) {
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CheckAuthResponse) GetUser() *UserPrivateModel {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+func (x *CheckAuthResponse) GetTokenId() string {
+	if x != nil {
+		return x.TokenId
+	}
+	return ""
+}
+
 type GetUserByUsernameRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
@@ -984,7 +1036,7 @@ type GetUserByUsernameRequest struct {
 
 func (x *GetUserByUsernameRequest) Reset() {
 	*x = GetUserByUsernameRequest{}
-	mi := &file_userservice_userservice_proto_msgTypes[18]
+	mi := &file_userservice_userservice_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -996,7 +1048,7 @@ func (x *GetUserByUsernameRequest) String() string {
 func (*GetUserByUsernameRequest) ProtoMessage() {}
 
 func (x *GetUserByUsernameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[18]
+	mi := &file_userservice_userservice_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1009,7 +1061,7 @@ func (x *GetUserByUsernameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByUsernameRequest.ProtoReflect.Descriptor instead.
 func (*GetUserByUsernameRequest) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{18}
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetUserByUsernameRequest) GetUsername() string {
@@ -1028,7 +1080,7 @@ type GetUserByUsernameResponse struct {
 
 func (x *GetUserByUsernameResponse) Reset() {
 	*x = GetUserByUsernameResponse{}
-	mi := &file_userservice_userservice_proto_msgTypes[19]
+	mi := &file_userservice_userservice_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1040,7 +1092,7 @@ func (x *GetUserByUsernameResponse) String() string {
 func (*GetUserByUsernameResponse) ProtoMessage() {}
 
 func (x *GetUserByUsernameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[19]
+	mi := &file_userservice_userservice_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1053,7 +1105,7 @@ func (x *GetUserByUsernameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByUsernameResponse.ProtoReflect.Descriptor instead.
 func (*GetUserByUsernameResponse) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{19}
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetUserByUsernameResponse) GetUser() *UserPublicModel {
@@ -1072,7 +1124,7 @@ type ChangeUsernameRequest struct {
 
 func (x *ChangeUsernameRequest) Reset() {
 	*x = ChangeUsernameRequest{}
-	mi := &file_userservice_userservice_proto_msgTypes[20]
+	mi := &file_userservice_userservice_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1084,7 +1136,7 @@ func (x *ChangeUsernameRequest) String() string {
 func (*ChangeUsernameRequest) ProtoMessage() {}
 
 func (x *ChangeUsernameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[20]
+	mi := &file_userservice_userservice_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1097,7 +1149,7 @@ func (x *ChangeUsernameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUsernameRequest.ProtoReflect.Descriptor instead.
 func (*ChangeUsernameRequest) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{20}
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ChangeUsernameRequest) GetUsername() string {
@@ -1116,7 +1168,7 @@ type ChangeUsernameResponse struct {
 
 func (x *ChangeUsernameResponse) Reset() {
 	*x = ChangeUsernameResponse{}
-	mi := &file_userservice_userservice_proto_msgTypes[21]
+	mi := &file_userservice_userservice_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1128,7 +1180,7 @@ func (x *ChangeUsernameResponse) String() string {
 func (*ChangeUsernameResponse) ProtoMessage() {}
 
 func (x *ChangeUsernameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[21]
+	mi := &file_userservice_userservice_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1141,7 +1193,7 @@ func (x *ChangeUsernameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeUsernameResponse.ProtoReflect.Descriptor instead.
 func (*ChangeUsernameResponse) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{21}
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ChangeUsernameResponse) GetUser() *UserPublicModel {
@@ -1160,7 +1212,7 @@ type DeleteUserResponse struct {
 
 func (x *DeleteUserResponse) Reset() {
 	*x = DeleteUserResponse{}
-	mi := &file_userservice_userservice_proto_msgTypes[22]
+	mi := &file_userservice_userservice_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1172,7 +1224,7 @@ func (x *DeleteUserResponse) String() string {
 func (*DeleteUserResponse) ProtoMessage() {}
 
 func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[22]
+	mi := &file_userservice_userservice_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1185,7 +1237,7 @@ func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{22}
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DeleteUserResponse) GetSuccess() bool {
@@ -1195,29 +1247,29 @@ func (x *DeleteUserResponse) GetSuccess() bool {
 	return false
 }
 
-type CheckAuthResponse struct {
+type CheckFollowRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *UserPrivateModel      `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
-	TokenId       string                 `protobuf:"bytes,2,opt,name=tokenId,proto3" json:"tokenId,omitempty"`
+	CurrentUserId int64                  `protobuf:"varint,1,opt,name=currentUserId,proto3" json:"currentUserId,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CheckAuthResponse) Reset() {
-	*x = CheckAuthResponse{}
-	mi := &file_userservice_userservice_proto_msgTypes[23]
+func (x *CheckFollowRequest) Reset() {
+	*x = CheckFollowRequest{}
+	mi := &file_userservice_userservice_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CheckAuthResponse) String() string {
+func (x *CheckFollowRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CheckAuthResponse) ProtoMessage() {}
+func (*CheckFollowRequest) ProtoMessage() {}
 
-func (x *CheckAuthResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userservice_userservice_proto_msgTypes[23]
+func (x *CheckFollowRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_userservice_userservice_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1228,23 +1280,259 @@ func (x *CheckAuthResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CheckAuthResponse.ProtoReflect.Descriptor instead.
-func (*CheckAuthResponse) Descriptor() ([]byte, []int) {
-	return file_userservice_userservice_proto_rawDescGZIP(), []int{23}
+// Deprecated: Use CheckFollowRequest.ProtoReflect.Descriptor instead.
+func (*CheckFollowRequest) Descriptor() ([]byte, []int) {
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *CheckAuthResponse) GetUser() *UserPrivateModel {
+func (x *CheckFollowRequest) GetCurrentUserId() int64 {
 	if x != nil {
-		return x.User
+		return x.CurrentUserId
 	}
-	return nil
+	return 0
 }
 
-func (x *CheckAuthResponse) GetTokenId() string {
+func (x *CheckFollowRequest) GetUserId() int64 {
 	if x != nil {
-		return x.TokenId
+		return x.UserId
 	}
-	return ""
+	return 0
+}
+
+type CheckFollowResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IsFollowed    bool                   `protobuf:"varint,1,opt,name=isFollowed,proto3" json:"isFollowed,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CheckFollowResponse) Reset() {
+	*x = CheckFollowResponse{}
+	mi := &file_userservice_userservice_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CheckFollowResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckFollowResponse) ProtoMessage() {}
+
+func (x *CheckFollowResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_userservice_userservice_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckFollowResponse.ProtoReflect.Descriptor instead.
+func (*CheckFollowResponse) Descriptor() ([]byte, []int) {
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *CheckFollowResponse) GetIsFollowed() bool {
+	if x != nil {
+		return x.IsFollowed
+	}
+	return false
+}
+
+type FollowRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CurrentUserId int64                  `protobuf:"varint,1,opt,name=currentUserId,proto3" json:"currentUserId,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FollowRequest) Reset() {
+	*x = FollowRequest{}
+	mi := &file_userservice_userservice_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FollowRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FollowRequest) ProtoMessage() {}
+
+func (x *FollowRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_userservice_userservice_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FollowRequest.ProtoReflect.Descriptor instead.
+func (*FollowRequest) Descriptor() ([]byte, []int) {
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *FollowRequest) GetCurrentUserId() int64 {
+	if x != nil {
+		return x.CurrentUserId
+	}
+	return 0
+}
+
+func (x *FollowRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+type FollowResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FollowResponse) Reset() {
+	*x = FollowResponse{}
+	mi := &file_userservice_userservice_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FollowResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FollowResponse) ProtoMessage() {}
+
+func (x *FollowResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_userservice_userservice_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FollowResponse.ProtoReflect.Descriptor instead.
+func (*FollowResponse) Descriptor() ([]byte, []int) {
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *FollowResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type UnfollowRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CurrentUserId int64                  `protobuf:"varint,1,opt,name=currentUserId,proto3" json:"currentUserId,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnfollowRequest) Reset() {
+	*x = UnfollowRequest{}
+	mi := &file_userservice_userservice_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnfollowRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnfollowRequest) ProtoMessage() {}
+
+func (x *UnfollowRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_userservice_userservice_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnfollowRequest.ProtoReflect.Descriptor instead.
+func (*UnfollowRequest) Descriptor() ([]byte, []int) {
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *UnfollowRequest) GetCurrentUserId() int64 {
+	if x != nil {
+		return x.CurrentUserId
+	}
+	return 0
+}
+
+func (x *UnfollowRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+type UnfollowResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnfollowResponse) Reset() {
+	*x = UnfollowResponse{}
+	mi := &file_userservice_userservice_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnfollowResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnfollowResponse) ProtoMessage() {}
+
+func (x *UnfollowResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_userservice_userservice_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnfollowResponse.ProtoReflect.Descriptor instead.
+func (*UnfollowResponse) Descriptor() ([]byte, []int) {
+	return file_userservice_userservice_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *UnfollowResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
 }
 
 var File_userservice_userservice_proto protoreflect.FileDescriptor
@@ -1307,7 +1595,10 @@ const file_userservice_userservice_proto_rawDesc = "" +
 	"\x16ChangePasswordResponse\x121\n" +
 	"\x04user\x18\x01 \x01(\v2\x1d.userservice.UserPrivateModelR\x04user\x12 \n" +
 	"\vaccessToken\x18\x02 \x01(\tR\vaccessToken\x12\"\n" +
-	"\frefreshToken\x18\x03 \x01(\tR\frefreshToken\"X\n" +
+	"\frefreshToken\x18\x03 \x01(\tR\frefreshToken\"`\n" +
+	"\x11CheckAuthResponse\x121\n" +
+	"\x04user\x18\x01 \x01(\v2\x1d.userservice.UserPrivateModelR\x04user\x12\x18\n" +
+	"\atokenId\x18\x02 \x01(\tR\atokenId\"X\n" +
 	"\x18GetUserByUsernameRequest\x12<\n" +
 	"\busername\x18\x01 \x01(\tB \xbaH\x1dr\x1b\x10\x01\x18\x142\x15^[a-z0-9][a-z0-9_-]*$R\busername\"M\n" +
 	"\x19GetUserByUsernameResponse\x120\n" +
@@ -1317,10 +1608,24 @@ const file_userservice_userservice_proto_rawDesc = "" +
 	"\x16ChangeUsernameResponse\x120\n" +
 	"\x04user\x18\x01 \x01(\v2\x1c.userservice.UserPublicModelR\x04user\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"`\n" +
-	"\x11CheckAuthResponse\x121\n" +
-	"\x04user\x18\x01 \x01(\v2\x1d.userservice.UserPrivateModelR\x04user\x12\x18\n" +
-	"\atokenId\x18\x02 \x01(\tR\atokenId2\xf9\a\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"R\n" +
+	"\x12CheckFollowRequest\x12$\n" +
+	"\rcurrentUserId\x18\x01 \x01(\x03R\rcurrentUserId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\x03R\x06userId\"5\n" +
+	"\x13CheckFollowResponse\x12\x1e\n" +
+	"\n" +
+	"isFollowed\x18\x01 \x01(\bR\n" +
+	"isFollowed\"M\n" +
+	"\rFollowRequest\x12$\n" +
+	"\rcurrentUserId\x18\x01 \x01(\x03R\rcurrentUserId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\x03R\x06userId\"*\n" +
+	"\x0eFollowResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"O\n" +
+	"\x0fUnfollowRequest\x12$\n" +
+	"\rcurrentUserId\x18\x01 \x01(\x03R\rcurrentUserId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\x03R\x06userId\",\n" +
+	"\x10UnfollowResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xd7\t\n" +
 	"\vUserService\x12G\n" +
 	"\bRegister\x12\x1c.userservice.RegisterRequest\x1a\x1d.userservice.RegisterResponse\x12>\n" +
 	"\x05Login\x12\x19.userservice.LoginRequest\x1a\x1a.userservice.LoginResponse\x12=\n" +
@@ -1335,7 +1640,10 @@ const file_userservice_userservice_proto_rawDesc = "" +
 	"\x11GetUserByUsername\x12%.userservice.GetUserByUsernameRequest\x1a&.userservice.GetUserByUsernameResponse\x12Y\n" +
 	"\x0eChangeUsername\x12\".userservice.ChangeUsernameRequest\x1a#.userservice.ChangeUsernameResponse\x12E\n" +
 	"\n" +
-	"DeleteUser\x12\x16.google.protobuf.Empty\x1a\x1f.userservice.DeleteUserResponseB\x9e\x01\n" +
+	"DeleteUser\x12\x16.google.protobuf.Empty\x1a\x1f.userservice.DeleteUserResponse\x12P\n" +
+	"\vCheckFollow\x12\x1f.userservice.CheckFollowRequest\x1a .userservice.CheckFollowResponse\x12A\n" +
+	"\x06Follow\x12\x1a.userservice.FollowRequest\x1a\x1b.userservice.FollowResponse\x12G\n" +
+	"\bUnfollow\x12\x1c.userservice.UnfollowRequest\x1a\x1d.userservice.UnfollowResponseB\x9e\x01\n" +
 	"\x0fcom.userserviceB\x10UserserviceProtoP\x01Z-github.com/ocenb/music-protos/gen/userservice\xa2\x02\x03UXX\xaa\x02\vUserservice\xca\x02\vUserservice\xe2\x02\x17Userservice\\GPBMetadata\xea\x02\vUserserviceb\x06proto3"
 
 var (
@@ -1350,7 +1658,7 @@ func file_userservice_userservice_proto_rawDescGZIP() []byte {
 	return file_userservice_userservice_proto_rawDescData
 }
 
-var file_userservice_userservice_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_userservice_userservice_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_userservice_userservice_proto_goTypes = []any{
 	(*UserPrivateModel)(nil),          // 0: userservice.UserPrivateModel
 	(*UserPublicModel)(nil),           // 1: userservice.UserPublicModel
@@ -1370,13 +1678,19 @@ var file_userservice_userservice_proto_goTypes = []any{
 	(*ChangeEmailResponse)(nil),       // 15: userservice.ChangeEmailResponse
 	(*ChangePasswordRequest)(nil),     // 16: userservice.ChangePasswordRequest
 	(*ChangePasswordResponse)(nil),    // 17: userservice.ChangePasswordResponse
-	(*GetUserByUsernameRequest)(nil),  // 18: userservice.GetUserByUsernameRequest
-	(*GetUserByUsernameResponse)(nil), // 19: userservice.GetUserByUsernameResponse
-	(*ChangeUsernameRequest)(nil),     // 20: userservice.ChangeUsernameRequest
-	(*ChangeUsernameResponse)(nil),    // 21: userservice.ChangeUsernameResponse
-	(*DeleteUserResponse)(nil),        // 22: userservice.DeleteUserResponse
-	(*CheckAuthResponse)(nil),         // 23: userservice.CheckAuthResponse
-	(*emptypb.Empty)(nil),             // 24: google.protobuf.Empty
+	(*CheckAuthResponse)(nil),         // 18: userservice.CheckAuthResponse
+	(*GetUserByUsernameRequest)(nil),  // 19: userservice.GetUserByUsernameRequest
+	(*GetUserByUsernameResponse)(nil), // 20: userservice.GetUserByUsernameResponse
+	(*ChangeUsernameRequest)(nil),     // 21: userservice.ChangeUsernameRequest
+	(*ChangeUsernameResponse)(nil),    // 22: userservice.ChangeUsernameResponse
+	(*DeleteUserResponse)(nil),        // 23: userservice.DeleteUserResponse
+	(*CheckFollowRequest)(nil),        // 24: userservice.CheckFollowRequest
+	(*CheckFollowResponse)(nil),       // 25: userservice.CheckFollowResponse
+	(*FollowRequest)(nil),             // 26: userservice.FollowRequest
+	(*FollowResponse)(nil),            // 27: userservice.FollowResponse
+	(*UnfollowRequest)(nil),           // 28: userservice.UnfollowRequest
+	(*UnfollowResponse)(nil),          // 29: userservice.UnfollowResponse
+	(*emptypb.Empty)(nil),             // 30: google.protobuf.Empty
 }
 var file_userservice_userservice_proto_depIdxs = []int32{
 	0,  // 0: userservice.RegisterResponse.user:type_name -> userservice.UserPrivateModel
@@ -1386,37 +1700,43 @@ var file_userservice_userservice_proto_depIdxs = []int32{
 	0,  // 4: userservice.NewVerificationResponse.user:type_name -> userservice.UserPrivateModel
 	0,  // 5: userservice.ChangeEmailResponse.user:type_name -> userservice.UserPrivateModel
 	0,  // 6: userservice.ChangePasswordResponse.user:type_name -> userservice.UserPrivateModel
-	1,  // 7: userservice.GetUserByUsernameResponse.user:type_name -> userservice.UserPublicModel
-	1,  // 8: userservice.ChangeUsernameResponse.user:type_name -> userservice.UserPublicModel
-	0,  // 9: userservice.CheckAuthResponse.user:type_name -> userservice.UserPrivateModel
+	0,  // 7: userservice.CheckAuthResponse.user:type_name -> userservice.UserPrivateModel
+	1,  // 8: userservice.GetUserByUsernameResponse.user:type_name -> userservice.UserPublicModel
+	1,  // 9: userservice.ChangeUsernameResponse.user:type_name -> userservice.UserPublicModel
 	2,  // 10: userservice.UserService.Register:input_type -> userservice.RegisterRequest
 	4,  // 11: userservice.UserService.Login:input_type -> userservice.LoginRequest
-	24, // 12: userservice.UserService.Logout:input_type -> google.protobuf.Empty
-	24, // 13: userservice.UserService.LogoutAll:input_type -> google.protobuf.Empty
+	30, // 12: userservice.UserService.Logout:input_type -> google.protobuf.Empty
+	30, // 13: userservice.UserService.LogoutAll:input_type -> google.protobuf.Empty
 	8,  // 14: userservice.UserService.Refresh:input_type -> userservice.RefreshRequest
 	10, // 15: userservice.UserService.Verify:input_type -> userservice.VerifyRequest
 	12, // 16: userservice.UserService.NewVerification:input_type -> userservice.NewVerificationRequest
 	14, // 17: userservice.UserService.ChangeEmail:input_type -> userservice.ChangeEmailRequest
 	16, // 18: userservice.UserService.ChangePassword:input_type -> userservice.ChangePasswordRequest
-	24, // 19: userservice.UserService.CheckAuth:input_type -> google.protobuf.Empty
-	18, // 20: userservice.UserService.GetUserByUsername:input_type -> userservice.GetUserByUsernameRequest
-	20, // 21: userservice.UserService.ChangeUsername:input_type -> userservice.ChangeUsernameRequest
-	24, // 22: userservice.UserService.DeleteUser:input_type -> google.protobuf.Empty
-	3,  // 23: userservice.UserService.Register:output_type -> userservice.RegisterResponse
-	5,  // 24: userservice.UserService.Login:output_type -> userservice.LoginResponse
-	6,  // 25: userservice.UserService.Logout:output_type -> userservice.LogoutResponse
-	7,  // 26: userservice.UserService.LogoutAll:output_type -> userservice.LogoutAllResponse
-	9,  // 27: userservice.UserService.Refresh:output_type -> userservice.RefreshResponse
-	11, // 28: userservice.UserService.Verify:output_type -> userservice.VerifyResponse
-	13, // 29: userservice.UserService.NewVerification:output_type -> userservice.NewVerificationResponse
-	15, // 30: userservice.UserService.ChangeEmail:output_type -> userservice.ChangeEmailResponse
-	17, // 31: userservice.UserService.ChangePassword:output_type -> userservice.ChangePasswordResponse
-	23, // 32: userservice.UserService.CheckAuth:output_type -> userservice.CheckAuthResponse
-	19, // 33: userservice.UserService.GetUserByUsername:output_type -> userservice.GetUserByUsernameResponse
-	21, // 34: userservice.UserService.ChangeUsername:output_type -> userservice.ChangeUsernameResponse
-	22, // 35: userservice.UserService.DeleteUser:output_type -> userservice.DeleteUserResponse
-	23, // [23:36] is the sub-list for method output_type
-	10, // [10:23] is the sub-list for method input_type
+	30, // 19: userservice.UserService.CheckAuth:input_type -> google.protobuf.Empty
+	19, // 20: userservice.UserService.GetUserByUsername:input_type -> userservice.GetUserByUsernameRequest
+	21, // 21: userservice.UserService.ChangeUsername:input_type -> userservice.ChangeUsernameRequest
+	30, // 22: userservice.UserService.DeleteUser:input_type -> google.protobuf.Empty
+	24, // 23: userservice.UserService.CheckFollow:input_type -> userservice.CheckFollowRequest
+	26, // 24: userservice.UserService.Follow:input_type -> userservice.FollowRequest
+	28, // 25: userservice.UserService.Unfollow:input_type -> userservice.UnfollowRequest
+	3,  // 26: userservice.UserService.Register:output_type -> userservice.RegisterResponse
+	5,  // 27: userservice.UserService.Login:output_type -> userservice.LoginResponse
+	6,  // 28: userservice.UserService.Logout:output_type -> userservice.LogoutResponse
+	7,  // 29: userservice.UserService.LogoutAll:output_type -> userservice.LogoutAllResponse
+	9,  // 30: userservice.UserService.Refresh:output_type -> userservice.RefreshResponse
+	11, // 31: userservice.UserService.Verify:output_type -> userservice.VerifyResponse
+	13, // 32: userservice.UserService.NewVerification:output_type -> userservice.NewVerificationResponse
+	15, // 33: userservice.UserService.ChangeEmail:output_type -> userservice.ChangeEmailResponse
+	17, // 34: userservice.UserService.ChangePassword:output_type -> userservice.ChangePasswordResponse
+	18, // 35: userservice.UserService.CheckAuth:output_type -> userservice.CheckAuthResponse
+	20, // 36: userservice.UserService.GetUserByUsername:output_type -> userservice.GetUserByUsernameResponse
+	22, // 37: userservice.UserService.ChangeUsername:output_type -> userservice.ChangeUsernameResponse
+	23, // 38: userservice.UserService.DeleteUser:output_type -> userservice.DeleteUserResponse
+	25, // 39: userservice.UserService.CheckFollow:output_type -> userservice.CheckFollowResponse
+	27, // 40: userservice.UserService.Follow:output_type -> userservice.FollowResponse
+	29, // 41: userservice.UserService.Unfollow:output_type -> userservice.UnfollowResponse
+	26, // [26:42] is the sub-list for method output_type
+	10, // [10:26] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
 	10, // [10:10] is the sub-list for extension extendee
 	0,  // [0:10] is the sub-list for field type_name
@@ -1433,7 +1753,7 @@ func file_userservice_userservice_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_userservice_userservice_proto_rawDesc), len(file_userservice_userservice_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   24,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

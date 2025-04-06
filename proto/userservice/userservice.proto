@@ -136,24 +136,21 @@ message DeleteUserResponse {
 }
 
 message CheckFollowRequest {
-  int64 currentUserId = 1;
-  int64 userId = 2;
+  int64 userId = 1;
 }
 message CheckFollowResponse {
   bool isFollowed = 1;
 }
 
 message FollowRequest {
-  int64 currentUserId = 1;
-  int64 userId = 2;
+  int64 userId = 1;
 }
 message FollowResponse {
   bool success = 1;
 }
 
 message UnfollowRequest {
-  int64 currentUserId = 1;
-  int64 userId = 2;
+  int64 userId = 1;
 }
 message UnfollowResponse {
   bool success = 1;

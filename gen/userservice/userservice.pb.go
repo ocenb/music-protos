@@ -1249,8 +1249,7 @@ func (x *DeleteUserResponse) GetSuccess() bool {
 
 type CheckFollowRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CurrentUserId int64                  `protobuf:"varint,1,opt,name=currentUserId,proto3" json:"currentUserId,omitempty"`
-	UserId        int64                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1283,13 +1282,6 @@ func (x *CheckFollowRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CheckFollowRequest.ProtoReflect.Descriptor instead.
 func (*CheckFollowRequest) Descriptor() ([]byte, []int) {
 	return file_userservice_userservice_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *CheckFollowRequest) GetCurrentUserId() int64 {
-	if x != nil {
-		return x.CurrentUserId
-	}
-	return 0
 }
 
 func (x *CheckFollowRequest) GetUserId() int64 {
@@ -1345,8 +1337,7 @@ func (x *CheckFollowResponse) GetIsFollowed() bool {
 
 type FollowRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CurrentUserId int64                  `protobuf:"varint,1,opt,name=currentUserId,proto3" json:"currentUserId,omitempty"`
-	UserId        int64                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1379,13 +1370,6 @@ func (x *FollowRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use FollowRequest.ProtoReflect.Descriptor instead.
 func (*FollowRequest) Descriptor() ([]byte, []int) {
 	return file_userservice_userservice_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *FollowRequest) GetCurrentUserId() int64 {
-	if x != nil {
-		return x.CurrentUserId
-	}
-	return 0
 }
 
 func (x *FollowRequest) GetUserId() int64 {
@@ -1441,8 +1425,7 @@ func (x *FollowResponse) GetSuccess() bool {
 
 type UnfollowRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CurrentUserId int64                  `protobuf:"varint,1,opt,name=currentUserId,proto3" json:"currentUserId,omitempty"`
-	UserId        int64                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1475,13 +1458,6 @@ func (x *UnfollowRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UnfollowRequest.ProtoReflect.Descriptor instead.
 func (*UnfollowRequest) Descriptor() ([]byte, []int) {
 	return file_userservice_userservice_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *UnfollowRequest) GetCurrentUserId() int64 {
-	if x != nil {
-		return x.CurrentUserId
-	}
-	return 0
 }
 
 func (x *UnfollowRequest) GetUserId() int64 {
@@ -1608,22 +1584,19 @@ const file_userservice_userservice_proto_rawDesc = "" +
 	"\x16ChangeUsernameResponse\x120\n" +
 	"\x04user\x18\x01 \x01(\v2\x1c.userservice.UserPublicModelR\x04user\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"R\n" +
-	"\x12CheckFollowRequest\x12$\n" +
-	"\rcurrentUserId\x18\x01 \x01(\x03R\rcurrentUserId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\x03R\x06userId\"5\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\",\n" +
+	"\x12CheckFollowRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId\"5\n" +
 	"\x13CheckFollowResponse\x12\x1e\n" +
 	"\n" +
 	"isFollowed\x18\x01 \x01(\bR\n" +
-	"isFollowed\"M\n" +
-	"\rFollowRequest\x12$\n" +
-	"\rcurrentUserId\x18\x01 \x01(\x03R\rcurrentUserId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\x03R\x06userId\"*\n" +
+	"isFollowed\"'\n" +
+	"\rFollowRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId\"*\n" +
 	"\x0eFollowResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"O\n" +
-	"\x0fUnfollowRequest\x12$\n" +
-	"\rcurrentUserId\x18\x01 \x01(\x03R\rcurrentUserId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\x03R\x06userId\",\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\")\n" +
+	"\x0fUnfollowRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId\",\n" +
 	"\x10UnfollowResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2\xd7\t\n" +
 	"\vUserService\x12G\n" +
